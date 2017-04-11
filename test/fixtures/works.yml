@@ -4,8 +4,54 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
+# good data
+aja:
+  title: Aja
+  category: album
+  creator: Steely Dan
+  publication_year: 1977
+  description: text
+
+ursula:
+  title: A Wizard of Earthsea
+  category: book
+  creator: Ursula K. Leguin
+  publication_year: 1968
+  description:
+
+besson:
+  title: Fifth Element
+  category: movie
+  creator: Luc Besson
+  publication_year:
+  description: Good sci-fi movie
+
+goldman:
+  title: Princess Bride
+  category: movie
+  creator:
+  publication_year: 1987
+  description:
+
+# bad data
+missing_title:
+  title:
+  category: album
+  creator: Steely Dan
+  publication_year: 1980
+  description: text
+
+missing_category:
+  title: Lost Time
+  category:
+  creator: Tacocat
+  publication_year: 2016
+  description: text
+
+wrong_category:
+  title: Kindred
+  category: performance
+  creator: Octavia E. Butler
+  publication_year: 1979
+  description: text
