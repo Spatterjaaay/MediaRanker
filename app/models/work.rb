@@ -1,7 +1,4 @@
 class Work < ApplicationRecord
-  validates :category, presence: true
+  validates :category, inclusion: { in: %w(movie book album) }
   validates :title, presence: true
-  validates :creator, presence: true
-  validates :publication_year, presence: true, numericality: { only_integer: true }
-  validates :description, presence: true
 end
