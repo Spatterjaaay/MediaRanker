@@ -21,21 +21,6 @@ class WorksController < ApplicationController
     end
   end
 
-  # def create(category)
-  #   @work = Work.create work_params category
-  #   if @work.id != nil
-  #     redirect_to works_path
-  #   else
-  #     render "new"
-  #   end
-  # end
-
-  ###########Book controller
-
-  # def create
-  #   super("book")
-  # end
-
   def destroy
     Work.destroy(params[:id])
     redirect_to works_path #movies/albums/books - list of all movies/albums/books
