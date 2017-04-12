@@ -1,6 +1,6 @@
 class BooksController < WorksController
   def index
-    @books = Works.where(category: "book")
+    @books = Work.where(category: "book")
   end
 
   def create
