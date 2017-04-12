@@ -10,7 +10,7 @@ require "csv"
 # seeding for works
 works = []
 
-CSV.foreach("media_seeds.csv", { :headers => true }) do |line|
+CSV.foreach("db/media_seeds.csv", { :headers => true }) do |line|
   works << {category: line[0], title: line[1], creator: line[2], publication_year: line[3], description: line[4]}
 end
 
