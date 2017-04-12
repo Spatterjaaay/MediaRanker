@@ -21,6 +21,16 @@ class WorksController < ApplicationController
     end
   end
 
+  def create(category)
+    @work = Work.new work_params
+    @work.category = category
+    if @work.save
+      redirect_to works_path
+    else
+      render "new"
+    end
+  end
+
   def destroy
     Work.destroy(params[:id])
     redirect_to works_path #movies/albums/books - list of all movies/albums/books
