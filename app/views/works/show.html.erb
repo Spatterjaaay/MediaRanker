@@ -1,0 +1,19 @@
+<h1>Work Details Page</h1>
+
+<ul>
+    <li><%= @result_work.title %></li>
+    <li>Created by: <%= @result_work.creator %></li>
+    <li>Published: <%= @result_work.publication_year %></li>
+    <li>Description: <%= @result_book.description %></li>
+</ul>
+
+<!-- # button back to book/album/movie list, redirects to the worng page atm -->
+<%= link_to "Back to #{@result_work.category} list" edit_book_path(@result_book.id) %>
+<%= link_to "Edit", edit_work_path(@result_work.id) %>
+
+<!-- <%= link_to "Upvote", edit_book_path(@result_book.id) %> -->
+<!-- redirects to the wrong path atm!!! -->
+<%= link_to "Delete", work_path(@result_book.id),
+    data: {confirm: "Are you sure?"},
+    method: :delete
+%>
