@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @books = Work.where(category: "album")
+    @albums = Work.where(category: "album")
   end
 
   def create

@@ -1,11 +1,10 @@
 <h1>Work Details Page</h1>
 
-<ul>
-    <li><%= @result_work.title %></li>
-    <li>Created by: <%= @result_work.creator %></li>
-    <li>Published: <%= @result_work.publication_year %></li>
-    <li>Description: <%= @result_work.description %></li>
-</ul>
+<h3><%= @result_work.title %></h3>
+<p>Created by: <%= @result_work.creator %></p>
+<p>Published: <%= @result_work.publication_year %></p>
+<p><%= @result_work.description %></p>
+
 
 <% if @result_work.category == "book" %>
 <%= link_to "Back to #{@result_work.category} list", books_path %>
@@ -14,8 +13,6 @@
 <% else %>
 <%= link_to "Back to #{@result_work.category} list", movies_path %>
 <% end %>
-
-<%= link_to "Back to #{@result_work.category} list", edit_work_path(@result_work.id) %>
 
 <%= link_to "Edit", edit_work_path(@result_work.id) %>
 
