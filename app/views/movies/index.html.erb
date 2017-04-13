@@ -1,15 +1,27 @@
-<h1>List of Movies</h1>
+<h3>List of Movies</h3>
 
-<h4>
-  <ul>
+<table>
+  <thead>
+    <tr>
+      <th width="80">Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th width="100">Published</th>
+      <th width="100">Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @movies.each do |movie| %>
-      <li>Votes</li>
-      <li>Title <%= link_to movie.title, work_path(movie.id) %></li>
-      <li>Created By <%= movie.creator %></li>
-      <li>Published <%= movie.publication_year %></li>
+    <tr>
+      <td>#</td>
+      <td><%= link_to movie.title, work_path(movie.id) %></td>
+      <td><%= movie.creator %></td>
+      <td><%= movie.publication_year %></td>
+      <td>Upvote</td>
+    </tr>
     <% end %>
-  </ul>
+  </tbody>
+</table>
 
-  <h2><%= link_to "View all media", works_path %></h2>
-  <h2><%= link_to "Add a new movie", new_movie_path %></h2>
-</h4>
+<h2><%= link_to "View all media", works_path %></h2>
+<h2><%= link_to "Add a new movie", new_movie_path %></h2>
