@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def login_form; end
 
   def login
-    user = Users.find_by_name(params[:name])
+    user = User.find_by_name(params[:name])
 
     if user
       # already exists
@@ -16,7 +16,8 @@ class SessionsController < ApplicationController
       user.name = params[:name]
       user.join_date = Time.now
       user.save
-      flash[:success] = "Successfully created new user #{ user.name } with ID #{}"
+      session[:user_id] = user.id
+      flash[:success] = "Successfully created new user #{ user.name } with ID #{ user.id }"
       redirect_to works_path
     end
   end
