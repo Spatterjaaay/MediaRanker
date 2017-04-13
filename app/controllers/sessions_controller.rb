@@ -13,8 +13,11 @@ class SessionsController < ApplicationController
     else
       # create new user
       user = User.new
+      user.name = params[:name]
+      user.join_date = Time.now
+      user.save
       flash[:success] = "Successfully created new user #{ user.name } with ID #{}"
-      render :login_form
+      redirect_to works_path
     end
   end
 

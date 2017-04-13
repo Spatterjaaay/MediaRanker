@@ -9,6 +9,20 @@
   </head>
 
   <body>
+    <nav>
+      <p>
+        <% if session[:author_id] %>
+          <%= button_to "Logout", logout_path, method: :delete %>
+        <% else %>
+          <%= button_to "Login", login_path %>
+        <% end %>
+      </p>
+    </nav>
+  <section class="flash">
+    <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+    <% end %>
+  </section>
     <%= yield %>
   </body>
 </html>
