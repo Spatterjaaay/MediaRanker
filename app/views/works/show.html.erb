@@ -7,7 +7,6 @@
     <li>Description: <%= @result_work.description %></li>
 </ul>
 
-<!-- # button back to book/album/movie list, redirects to the worng page atm -->
 <% if @result_work.category == "book" %>
 <%= link_to "Back to #{@result_work.category} list", books_path %>
 <% elsif @result_work.category == "album" %>
@@ -15,6 +14,9 @@
 <% else %>
 <%= link_to "Back to #{@result_work.category} list", movies_path %>
 <% end %>
+
+<%= link_to "Back to #{@result_work.category} list", edit_work_path(@result_work.id) %>
+
 <%= link_to "Edit", edit_work_path(@result_work.id) %>
 
 <!-- <%= link_to "Upvote", edit_work_path(@result_work.id) %> -->
