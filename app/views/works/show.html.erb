@@ -1,4 +1,12 @@
-<h1>Work Details Page</h1>
+<% if @vote %>
+<ul>
+  <% @vote.errors.each do |field, msg| %>
+  <li>
+    <%= field %> <%= msg %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
 
 <h3><%= @result_work.title %></h3>
 <p>Created by: <%= @result_work.creator %></p>

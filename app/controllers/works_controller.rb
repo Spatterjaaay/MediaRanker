@@ -41,8 +41,15 @@ class WorksController < ApplicationController
     if session[:user_id]
     # if this user didn't vote for it before
     # create new Vote
-      @vote = Vote.create!(user_id: session[:user_id], work_id: params[:work_id])
-      redirect_to :back
+    @vote = Vote.create(user_id: session[:user_id], work_id: params[:work_id])
+      if @vote.id
+        flash[:success] = "Successfully upvoted!"
+        redirect_to :back
+      else
+        flash.now[:error] = "Could not upvote"
+        @result_work = Work.find(params[:work_id])
+        render "show"
+      end
     # else flash you already voted for it
     else
       flash[:error] = "You must log in to do that"
