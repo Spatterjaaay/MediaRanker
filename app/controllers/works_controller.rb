@@ -14,44 +14,67 @@ class WorksController < ApplicationController
   def update
     @work = Work.find(params[:id])
 
-    if @work.update(trip_params)
-      redirect_to work_path #movies/albums/books - list of all movies/albums/books
+    if @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.category} #{ @work.id }"
+      if @work.category == "book"
+        redirect_to books_path
+      elsif @work.category == "album"
+        redirect_to albums_path
+      else
+        redirect_to movies_path
+      end
     else
+      flash.now[:error] = "A problem occurred: Could not update #{ @work.category }"
       render "edit"
     end
+  end
+
+  def new
+    @work = Work.new
   end
 
   def create(category)
     @work = Work.new work_params
     @work.category = category
     if @work.save
-      redirect_to works_path
+      flash[:success] = "Successfully created #{category} #{ @work.id }"
+      if @work.category == "book"
+        redirect_to books_path
+      elsif @work.category == "album"
+        redirect_to albums_path
+      else
+        redirect_to movies_path
+      end
     else
+      flash.now[:error] = "A problem occurred: Could not create #{category}"
       render "new"
+      return
     end
   end
 
   def destroy
-    Work.destroy(params[:id])
-    redirect_to works_path #movies/albums/books - list of all movies/albums/books
+    @work = Work.destroy(params[:id])
+    flash[:success] = "Successfully destroyed #{@work.category} #{ @work.id }"
+    if @work.category == "book"
+      redirect_to books_path
+    elsif @work.category == "album"
+      redirect_to albums_path
+    else
+      redirect_to movies_path
+    end
   end
 
   def upvote
-    # if user is logged in
     if session[:user_id]
-    # if this user didn't vote for it before
-    # create new Vote
     @vote = Vote.create(user_id: session[:user_id], work_id: params[:work_id])
       if @vote.id
         flash[:success] = "Successfully upvoted!"
-        #redirect_to :back
         redirect_back(fallback_location: root_path)
       else
         flash.now[:error] = "Could not upvote"
         @result_work = Work.find(params[:work_id])
         render "show"
       end
-    # else flash you already voted for it
     else
       flash[:error] = "You must log in to do that"
       redirect_back(fallback_location: root_path)
