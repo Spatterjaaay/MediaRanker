@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # get "/works/:category", to:
 
   resources :books
-  resources :movies
   resources :albums
+  resources :movies
   resources :works
 
   get "/login", to: "sessions#login_form"
