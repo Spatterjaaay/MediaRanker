@@ -14,11 +14,15 @@ class WorksController < ApplicationController
   def update
     @work = Work.find(params[:id])
 
-    if @work.update(trip_params)
+    if @work.update(work_params)
       redirect_to work_path #movies/albums/books - list of all movies/albums/books
     else
       render "edit"
     end
+  end
+
+  def new
+    @work = Work.new
   end
 
   def create(category)
