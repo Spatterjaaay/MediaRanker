@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   def index
+    @spotlight_work = Work.spotlight
     @sorted_books = Work.top_ten_works("book")
     @sorted_albums = Work.top_ten_works("album")
     @sorted_movies = Work.top_ten_works("movie")

@@ -13,7 +13,7 @@
 <p>Published: <%= @result_work.publication_year %></p>
 <p><%= @result_work.description %></p>
 
-<h3><%= @result_work.votes.count%> Votes for this Book</h3>
+<h3><%= pluralize(@result_work.votes_count, "vote")%> for this Book</h3>
 
 
 <% if @result_work.category == "book" %>

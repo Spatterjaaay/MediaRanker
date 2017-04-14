@@ -5,8 +5,11 @@ class Work < ApplicationRecord
   validates :title, presence: true
 
   def self.top_ten_works(category)
-    @works = Work.where(category: category).order(title: :desc)[0..10]
+      where(category: category).order(votes_count: :desc).limit(10)
   end
 
+  def self.spotlight
+      all.order(votes_count: :desc).first
+  end
 
 end
