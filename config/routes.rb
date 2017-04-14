@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post "/works/:work_id/upvote", to: "works#upvote", as: "upvote"
+
   resources :works
   resources :books
   resources :movies

@@ -36,6 +36,20 @@ class WorksController < ApplicationController
     redirect_to works_path #movies/albums/books - list of all movies/albums/books
   end
 
+  def upvote
+    # if user is logged in
+    if session[:user_id]
+    # if this user didn't vote for it before
+    # create new Vote
+      @vote = Vote.create!(user_id: session[:user_id], work_id: params[:work_id])
+      redirect_to :back
+    # else flash you already voted for it
+    else
+      flash.now[:error] = "You must log in to do that"
+      render "show"
+    end
+  end
+
   private
 
   def work_params

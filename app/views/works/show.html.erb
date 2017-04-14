@@ -5,6 +5,8 @@
 <p>Published: <%= @result_work.publication_year %></p>
 <p><%= @result_work.description %></p>
 
+<h3><%= @result_work.votes.count%> Votes for this Book</h3>
+
 
 <% if @result_work.category == "book" %>
 <%= link_to "Back to #{@result_work.category} list", books_path %>
@@ -16,7 +18,7 @@
 
 <%= link_to "Edit", edit_work_path(@result_work.id) %>
 
-<!-- <%= link_to "Upvote", edit_work_path(@result_work.id) %> -->
+<%= link_to "Upvote", upvote_path(@result_work.id), method: :post %>
 <!-- redirects to the wrong path atm!!! -->
 <%= link_to "Delete", work_path(@result_work.id),
     data: {confirm: "Are you sure?"},
