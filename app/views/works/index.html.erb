@@ -27,7 +27,7 @@
 <ul>
   <% @sorted_albums.each do |album| %>
     <li>
-      <h4><%= album.title %> by <%= album.creator %>
+      <h4><%= link_to album.title, work_path(album.id) %> by <%= album.creator %>
       <p><%= pluralize(album.votes_count, "vote") %></p>
     </li>
   <% end %>
