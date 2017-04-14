@@ -15,8 +15,16 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
 
     if @work.update(work_params)
-      redirect_to work_path #movies/albums/books - list of all movies/albums/books
+      flash[:success] = "Successfully updated movie #{ @work.id }"
+      if @work.category == "book"
+        redirect_to books_path
+      elsif @work.category == "albums"
+        redirect_to albums_path
+      else
+        redirect_to movies_path
+      end
     else
+      flash.now[:error] = "A problem occurred: Could not update #{ @work.category }"
       render "edit"
     end
   end
@@ -29,15 +37,24 @@ class WorksController < ApplicationController
     @work = Work.new work_params
     @work.category = category
     if @work.save
-      redirect_to works_path
+      flash[:success] = "Successfully created movie #{ @work.id }"
+      if @work.category == "book"
+        redirect_to books_path
+      elsif @work.category == "albums"
+        redirect_to albums_path
+      else
+        redirect_to movies_path
+      end
     else
+      flash.now[:error] = "A problem occurred: Could not create #{category}"
       render "new"
+      return
     end
   end
 
   def destroy
     Work.destroy(params[:id])
-    redirect_to works_path #movies/albums/books - list of all movies/albums/books
+    redirect_back(fallback_location: root_path) #movies/albums/books - list of all movies/albums/books
   end
 
   def upvote

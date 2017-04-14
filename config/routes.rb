@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'works#index'
   post "/works/:work_id/upvote", to: "works#upvote", as: "upvote"
   # get "/works/:category", to:
 
