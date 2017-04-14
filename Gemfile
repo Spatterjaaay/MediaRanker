@@ -60,5 +60,6 @@ end
 gem 'awesome_print'
 group :test do
   gem 'minitest-rails'
+  gem "binding_of_caller"
   gem 'minitest-reporters'
 end
