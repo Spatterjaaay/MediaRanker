@@ -3,8 +3,13 @@
 <h3>Media Spotlight: </h3>
 
 <h3>Top Movies</h3>
-<ul>
-
-</ul>
 <h3>Top Books</h3>
+<ul>
+  <% @sorted_books.each do |book| %>
+    <li>
+      <h4><%= book.title %> by <%= book.creator %>
+      <p><%= book.votes.count %> votes</p>
+    </li>
+  <% end %>
+<ul>
 <h3>Top Albums</h3>
