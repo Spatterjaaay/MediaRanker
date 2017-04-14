@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413055729) do
+ActiveRecord::Schema.define(version: 20170414035343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170413055729) do
     t.date     "vote_date"
     t.integer  "user_id"
     t.integer  "work_id"
+    t.index ["user_id", "work_id"], name: "index_votes_on_user_id_and_work_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
     t.index ["work_id"], name: "index_votes_on_work_id", using: :btree
   end
