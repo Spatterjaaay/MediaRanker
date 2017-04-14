@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   post "/works/:work_id/upvote", to: "works#upvote", as: "upvote"
+  # get "/works/:category", to:
 
   resources :works
   resources :books

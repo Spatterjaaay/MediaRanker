@@ -44,7 +44,8 @@ class WorksController < ApplicationController
     @vote = Vote.create(user_id: session[:user_id], work_id: params[:work_id])
       if @vote.id
         flash[:success] = "Successfully upvoted!"
-        redirect_to :back
+        #redirect_to :back
+        redirect_back(fallback_location: root_path)
       else
         flash.now[:error] = "Could not upvote"
         @result_work = Work.find(params[:work_id])
@@ -53,7 +54,7 @@ class WorksController < ApplicationController
     # else flash you already voted for it
     else
       flash[:error] = "You must log in to do that"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 
