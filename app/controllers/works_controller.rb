@@ -45,8 +45,8 @@ class WorksController < ApplicationController
       redirect_to :back
     # else flash you already voted for it
     else
-      flash.now[:error] = "You must log in to do that"
-      render "show"
+      flash[:error] = "You must log in to do that"
+      redirect_to :back
     end
   end
 
