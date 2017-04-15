@@ -39,9 +39,9 @@
    </tr>
  </thead>
  <tbody>
-   <% @result_work.votes.each do |vote| %>
+   <% @result_work.votes.order(created_at: :desc).each do |vote| %>
      <tr>
-       <td><%= vote.user.name %></td>
+       <td><%= link_to "vote.user.name", users_path %></td>
        <td><%= vote.created_at.to_date.to_formatted_s(:long) %></td>
      </tr>
    <% end %>
