@@ -15,13 +15,18 @@ describe WorksController do
     get work_path("stupid")
     must_respond_with :missing
   end
+
+  it "should show the new book form" do
+    get new_work_path
+    must_respond_with :success
+  end
+
+
+
+
 end
 
-#
-#     it "should show the new book form" do
-#       get new_book_path
-#       must_respond_with :success
-#     end
+
 #
 #     it "should redirect to list after adding book" do
 #       # strong params also applies to these params
