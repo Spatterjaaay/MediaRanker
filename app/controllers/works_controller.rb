@@ -77,6 +77,7 @@ class WorksController < ApplicationController
         flash.now[:error] = "Could not upvote"
         @result_work = Work.find(params[:work_id])
         render "show"
+        # redirect_back(fallback_location: root_path)
       end
     else
       flash[:error] = "You must log in to do that"
