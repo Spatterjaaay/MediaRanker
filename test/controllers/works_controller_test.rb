@@ -61,14 +61,5 @@ describe WorksController do
   end
 end
 
-
-
-#
-#     it "should get edit" do
-#       # in parens(the file name of the fixtures, which is books,
-#       # the name of the fixture, which is :poodr, and then grabbing it's id
-#       get edit_book_path(books(:poodr).id)
-#       must_respond_with :success
-#     end
-#
-# end
+# should test that I can upvote work only if logged in, and if user not logged in it shows a flash
+# test upvote action
