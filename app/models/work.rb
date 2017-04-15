@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   validates :category, inclusion: { in: %w(movie book album) }
   validates :title, presence: true

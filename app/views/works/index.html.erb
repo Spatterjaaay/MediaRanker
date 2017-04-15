@@ -5,7 +5,7 @@
 
 
 <h3>Top Movies</h3>
-<% if @sorted_movies %>
+
   <ul>
     <% @sorted_movies.each do |movie| %>
       <li>
@@ -14,11 +14,10 @@
       </li>
     <% end %>
   </ul>
-<% end %>
+
 <%= link_to "View more movies", movies_path %>
 
 <h3>Top Books</h3>
-<% if @sorted_books %>
   <ul>
     <% @sorted_books.each do |book| %>
       <li>
@@ -27,11 +26,10 @@
       </li>
     <% end %>
   </ul>
-<% end %>
 <%= link_to "View more books", movies_path %>
 
 <h3>Top Albums</h3>
-<% if @sorted_albums %>
+
   <ul>
     <% @sorted_albums.each do |album| %>
       <li>
@@ -40,5 +38,5 @@
       </li>
     <% end %>
   </ul>
-<% end %>
+
 <%= link_to "View more albums", movies_path %>
