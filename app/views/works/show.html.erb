@@ -39,6 +39,11 @@
    </tr>
  </thead>
  <tbody>
-   
+   <% @result_work.votes.each do |vote| %>
+     <tr>
+       <td><%= vote.user.name %></td>
+       <td><%= vote.created_at.to_date.to_formatted_s(:long) %></td>
+     </tr>
+   <% end %>
  </tbody>
 </table>
