@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :albums
   resources :movies
   resources :works
+  resources :users
 
   get "/login", to: "sessions#login_form"
   post "/login", to: "sessions#login"

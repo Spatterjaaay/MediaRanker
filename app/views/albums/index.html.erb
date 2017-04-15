@@ -13,15 +13,15 @@
   <tbody>
     <% @albums.each do |album| %>
     <tr>
-      <td>#</td>
+      <td><%= album.votes_count %></td>
       <td><%= link_to album.title, work_path(album.id) %></td>
       <td><%= album.creator %></td>
       <td><%= album.publication_year %></td>
-      <td>Upvote</td>
+      <td><%= link_to "Upvote", upvote_path(album.id), method: :post %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<h2><%= link_to "View all media", works_path %></h2>
+<h2><%= link_to "View all media", root_path %></h2>
 <h2><%= link_to "Add a new album", new_album_path %></h2>
