@@ -1,6 +1,9 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
+    @spotlight_work = Work.spotlight
+    @sorted_books = Work.top_ten_works("book")
+    @sorted_albums = Work.top_ten_works("album")
+    @sorted_movies = Work.top_ten_works("movie")
   end
 
   def show
@@ -74,6 +77,7 @@ class WorksController < ApplicationController
         flash.now[:error] = "Could not upvote"
         @result_work = Work.find(params[:work_id])
         render "show"
+        # redirect_back(fallback_location: root_path)
       end
     else
       flash[:error] = "You must log in to do that"

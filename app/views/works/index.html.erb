@@ -1,10 +1,34 @@
-<h1>Works index page possibly home page?</h1>
+<h3>Media Spotlight: <%= @spotlight_work.title %> by <%= @spotlight_work.creator%></h3>
+<p><%= pluralize(@spotlight_work.votes.count, "vote") %> - <%= @spotlight_work.description %>
 
-<h3>Media Spotlight: </h3>
+</p>
 
 <h3>Top Movies</h3>
 <ul>
-
+  <% @sorted_movies.each do |movie| %>
+    <li>
+      <h4><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator %>
+      <p><%= pluralize(movie.votes_count, "vote") %></p>
+    </li>
+  <% end %>
 </ul>
+
 <h3>Top Books</h3>
+<ul>
+  <% @sorted_books.each do |book| %>
+    <li>
+      <h4><%= link_to book.title, work_path(book.id) %> by <%= book.creator %>
+      <p><%= pluralize(book.votes_count, "vote") %></p>
+    </li>
+  <% end %>
+</ul>
+
 <h3>Top Albums</h3>
+<ul>
+  <% @sorted_albums.each do |album| %>
+    <li>
+      <h4><%= link_to album.title, work_path(album.id) %> by <%= album.creator %>
+      <p><%= pluralize(album.votes_count, "vote") %></p>
+    </li>
+  <% end %>
+</ul>
