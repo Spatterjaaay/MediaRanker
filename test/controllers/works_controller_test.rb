@@ -36,7 +36,7 @@ describe WorksController do
     must_redirect_to movies_path
   end
 
-  it "should show a flash if atempting to update work with no title" do
+  it "should show a flash if attempting to update work with no title" do
     patch work_path(works(:ursula).id), params: { work: { title: ""} }
 
     assert_equal "A problem occurred: Could not update book", flash[:error]

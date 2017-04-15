@@ -13,9 +13,6 @@
 <p>Published: <%= @result_work.publication_year %></p>
 <p><%= @result_work.description %></p>
 
-<h3><%= pluralize(@result_work.votes_count, "vote")%> for this Book</h3>
-
-
 <% if @result_work.category == "book" %>
 <%= link_to "Back to #{@result_work.category} list", books_path %>
 <% elsif @result_work.category == "album" %>
@@ -31,3 +28,17 @@
 <%= link_to "Delete", work_path(@result_work.id),
     data: {confirm: "Are you sure?"},
     method: :delete %>
+
+<h3><%= pluralize(@result_work.votes_count, "vote")%> for this Book</h3>
+
+<table>
+ <thead>
+   <tr>
+     <th>User</th>
+     <th>Date</th>
+   </tr>
+ </thead>
+ <tbody>
+   
+ </tbody>
+</table>
