@@ -27,12 +27,22 @@ describe BooksController do
     must_redirect_to books_path
   end
 
-  it "should throw an error if attempting to create a book with no title" do
+  it "should show a flash if attempting to create a book with no title" do
     post books_path, params: { work:
       { title: "",
         creator: "Jane Austen",
         description: "A lot of romance"
       } }
     assert_equal "A problem occurred: Could not create book", flash[:error]
+  end
+
+  it "shouldn't create a new book if passing a book with no title" do
+    assert_no_difference 'Work.count' do
+      post books_path, params: { work:
+        { title: "",
+          creator: "Jane Austen",
+          description: "A lot of romance"
+        } }
+    end
   end
 end

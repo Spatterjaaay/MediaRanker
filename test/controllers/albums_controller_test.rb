@@ -35,4 +35,14 @@ describe AlbumsController do
       } }
     assert_equal "A problem occurred: Could not create album", flash[:error]
   end
+
+  it "shouldn't create a new album if passing an album with no title" do
+    assert_no_difference 'Work.count' do
+      post books_path, params: { work:
+        { title: "",
+          creator: "NIN",
+          description: "Music"
+        } }
+    end
+  end
 end

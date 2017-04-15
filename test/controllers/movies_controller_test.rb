@@ -34,4 +34,14 @@ describe MoviesController do
       } }
     assert_equal "A problem occurred: Could not create movie", flash[:error]
   end
+
+  it "shouldn't create a new movie if passing a movie with no title" do
+    assert_no_difference 'Work.count' do
+      post books_path, params: { work:
+        { title: "",
+          creator: "George Lucas",
+          description: "Lightsabers!"
+        } }
+    end
+  end
 end
