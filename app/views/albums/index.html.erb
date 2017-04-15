@@ -13,7 +13,7 @@
   <tbody>
     <% @albums.each do |album| %>
     <tr>
-      <td>#</td>
+      <td><%= album.votes_count %></td>
       <td><%= link_to album.title, work_path(album.id) %></td>
       <td><%= album.creator %></td>
       <td><%= album.publication_year %></td>

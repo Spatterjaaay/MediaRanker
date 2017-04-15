@@ -1,6 +1,6 @@
 class MoviesController < WorksController
   def index
-    @movies = Work.where(category: "movie")
+    @movies = Work.where(category: "movie").order(votes_count: :desc)
   end
 
   def new
