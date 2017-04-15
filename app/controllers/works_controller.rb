@@ -7,7 +7,8 @@ class WorksController < ApplicationController
   end
 
   def show
-    @result_work = Work.find(params[:id])
+    @result_work = Work.find_by_id(params[:id])
+    render_404 if !@result_work
   end
 
   def edit
