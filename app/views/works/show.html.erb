@@ -41,7 +41,7 @@
  <tbody>
    <% @result_work.votes.order(created_at: :desc).each do |vote| %>
      <tr>
-       <td><%= link_to "vote.user.name", users_path %></td>
+       <td><%= link_to vote.user.name, user_path(vote.user_id) %></td>
        <td><%= vote.created_at.to_date.to_formatted_s(:long) %></td>
      </tr>
    <% end %>

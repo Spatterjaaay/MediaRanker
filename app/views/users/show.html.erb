@@ -1,0 +1,26 @@
+<h3>User Summary: <%= @user.name %></h3>
+<p>Joined site <%= @user.created_at.to_date.to_formatted_s(:long) %></p>
+
+<h4>Votes</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.votes.each do |vote| %>
+    <tr>
+      <td><%= vote.work.title %></td>
+      <td><%= vote.work.creator%></td>
+      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.category %></td>
+      <td><%= vote.created_at.to_date.to_formatted_s(:long) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
