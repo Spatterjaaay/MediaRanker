@@ -4,12 +4,17 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+# good data
 one: {
   name: Picard
   }
-# column: value
-#
+
+
 two: {
   name: Troi
   }
-# column: value
+
+# bad data
+missing_name: {
+  name:
+  }
