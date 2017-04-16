@@ -6,7 +6,7 @@ describe MoviesController do
     must_respond_with :success
   end
 
-  it "should show the new book form" do
+  it "should show the new movie form" do
     get new_movie_path
     must_respond_with :success
   end

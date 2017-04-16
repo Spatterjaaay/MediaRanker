@@ -6,7 +6,7 @@ describe AlbumsController do
     must_respond_with :success
   end
 
-  it "should show the new book form" do
+  it "should show the new album form" do
     get new_album_path
     must_respond_with :success
   end

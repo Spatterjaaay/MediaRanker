@@ -36,7 +36,6 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
-    render_404 if !@work
   end
 
   def create(category)
