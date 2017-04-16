@@ -8,42 +8,46 @@
 </ul>
 <% end %>
 
-<h3><%= @result_work.title %></h3>
-<p>Created by: <%= @result_work.creator %></p>
-<p>Published: <%= @result_work.publication_year %></p>
-<p><%= @result_work.description %></p>
+<article class="media-details columns large-6 small-12">
+  <h3><%= @result_work.title %></h3>
+  <p>Created by: <%= @result_work.creator %></p>
+  <p>Published: <%= @result_work.publication_year %></p>
+  <p><%= @result_work.description %></p>
 
-<% if @result_work.category == "book" %>
-<%= link_to "Back to #{@result_work.category} list", books_path %>
-<% elsif @result_work.category == "album" %>
-<%= link_to "Back to #{@result_work.category} list", albums_path %>
-<% else %>
-<%= link_to "Back to #{@result_work.category} list", movies_path %>
-<% end %>
+  <% if @result_work.category == "book" %>
+  <%= link_to "Back to #{@result_work.category} list", books_path, class: "button" %>
+  <% elsif @result_work.category == "album" %>
+  <%= link_to "Back to #{@result_work.category} list", albums_path, class: "button" %>
+  <% else %>
+  <%= link_to "Back to #{@result_work.category} list", movies_path, class: "button" %>
+  <% end %>
 
-<%= link_to "Edit", edit_work_path(@result_work.id) %>
+  <%= link_to "Edit", edit_work_path(@result_work.id), class: "button" %>
 
-<%= link_to "Upvote", upvote_path(@result_work.id), method: :post %>
-<!-- redirects to the wrong path atm!!! -->
-<%= link_to "Delete", work_path(@result_work.id),
-    data: {confirm: "Are you sure?"},
-    method: :delete %>
+  <%= link_to "Upvote", upvote_path(@result_work.id), method: :post, class: "button" %>
+  <!-- redirects to the wrong path atm!!! -->
+  <%= link_to "Delete", work_path(@result_work.id),
+      data: {confirm: "Are you sure?"},
+      method: :delete, class: "alert button" %>
+</article>
 
-<h3><%= pluralize(@result_work.votes_count, "vote")%> for this Book</h3>
+<article class="voting-users columns large-6 small-12">
+  <h3><%= pluralize(@result_work.votes_count, "vote")%> for this <%= @result_work.category.capitalize%></h3>
 
-<table>
- <thead>
-   <tr>
-     <th>User</th>
-     <th>Date</th>
-   </tr>
- </thead>
- <tbody>
-   <% @result_work.votes.order(created_at: :desc).each do |vote| %>
+  <table>
+   <thead>
      <tr>
-       <td><%= link_to vote.user.name, user_path(vote.user_id) %></td>
-       <td><%= vote.created_at.to_date.to_formatted_s(:long) %></td>
+       <th>User</th>
+       <th>Date</th>
      </tr>
-   <% end %>
- </tbody>
-</table>
+   </thead>
+   <tbody>
+     <% @result_work.votes.order(created_at: :desc).each do |vote| %>
+       <tr>
+         <td><%= link_to vote.user.name, user_path(vote.user_id) %></td>
+         <td><%= vote.created_at.to_date.to_formatted_s(:long) %></td>
+       </tr>
+     <% end %>
+   </tbody>
+  </table>
+</article>
