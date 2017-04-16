@@ -6,6 +6,11 @@ describe MoviesController do
     must_respond_with :success
   end
 
+  it "should show the new book form" do
+    get new_movie_path
+    must_respond_with :success
+  end
+
   it "should create a new movie" do
     proc {
       post movies_path, params: { work:

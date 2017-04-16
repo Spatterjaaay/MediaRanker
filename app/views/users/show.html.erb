@@ -13,8 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% if @user.votes %>
-      <% @user.votes.each do |vote| %>
+    <% @user.votes.each do |vote| %>
       <tr>
         <td><%= vote.work.title %></td>
         <td><%= vote.work.creator%></td>
@@ -22,7 +21,6 @@
         <td><%= vote.work.category %></td>
         <td><%= vote.created_at.to_date.to_formatted_s(:long) %></td>
       </tr>
-      <% end %>
     <% end %>
   </tbody>
 </table>

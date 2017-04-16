@@ -12,7 +12,7 @@ aja:
   creator: Steely Dan
   publication_year: 1977
   description: text
-  votes_count: 10
+  votes_count: 
 
 ursula:
   title: A Wizard of Earthsea
@@ -28,7 +28,7 @@ besson:
   creator: Luc Besson
   publication_year:
   description: Good sci-fi movie
-  votes_count: 8
+  votes_count: 10
 
 goldman:
   title: Princess Bride
