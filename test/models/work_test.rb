@@ -72,17 +72,17 @@ describe Work do
     end
   end
 
-  # describe "spotlight" do
-  #   it "returns work with the most votes over all" do
-  #     work = works(:lee)
-  #     user = User.create(name: "ken")
-  #     vote = Vote.create(user_id: user.id, work_id: work.id)
-  #     Work.spotlight.must_equal work
-  #   end
-  #
-  #   it "can return a random work object when there's no votes" do
-  #     Work.spotlight.wont_be_nil
-  #     Work.spotlight.class.must_equal Work
-  #   end
-  # end
+  describe "spotlight" do
+    it "returns work with the most votes overall" do
+      work = works(:goldman)
+      user = users(:user_one)
+      Vote.create(user_id: user.id, work_id: work.id)
+      Work.spotlight.must_equal work
+    end
+
+    it "displays a work when there's no votes" do
+      Work.spotlight.wont_be_nil
+      Work.spotlight.class.must_equal Work
+    end
+  end
 end

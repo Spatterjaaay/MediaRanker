@@ -56,7 +56,7 @@ describe WorksController do
   end
 
   it "should delete a work and redirect to the corresponding list" do
-    delete book_path(works(:goldman).id)
+    delete work_path(works(:goldman).id)
     must_redirect_to movies_path
   end
 end
