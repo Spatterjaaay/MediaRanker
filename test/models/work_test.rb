@@ -4,14 +4,12 @@ describe Work do
   let(:work) { Work.new }
 
   it "Works require title" do
-    # negative test
     work = works(:missing_title)
     work.valid?.must_equal false
     work.errors.messages.must_include :title
   end
 
   it "If a title is given the work is valid" do
-    # postitive test
     work = works(:aja)
     work.valid?
     work.errors.messages[:title].must_equal []
