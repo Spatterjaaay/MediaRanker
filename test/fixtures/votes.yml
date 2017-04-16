@@ -14,7 +14,6 @@ two:
   work: besson
 
 # invalid data
-
 missing_user:
   user:
   work: goldman
