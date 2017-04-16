@@ -11,13 +11,13 @@ describe User do
     end
 
     it "If a name is given the user is valid" do
-      user = users(:two)
+      user = users(:user_two)
       user.valid?
       user.errors.messages[:name].must_equal []
     end
 
     it "You can create a user" do
-      user = users(:two)
+      user = users(:user_one)
       user.valid?.must_equal true
     end
   end

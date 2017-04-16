@@ -5,16 +5,12 @@
 # below each fixture, per the syntax in the comments below
 #
 # good data
-one: {
+user_two:
   name: Picard
-  }
 
-
-two: {
+user_one:
   name: Troi
-  }
 
 # bad data
-missing_name: {
+missing_name:
   name:
-  }
