@@ -6,6 +6,11 @@ describe BooksController do
     must_respond_with :success
   end
 
+  it "should show the new book form" do
+    get new_book_path
+    must_respond_with :success
+  end
+
   it "should create a new book" do
     proc {
       post books_path, params: { work:
