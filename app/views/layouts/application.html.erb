@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MediaRanker</title>
+    <title>MediaRanker 2.0</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,27 +9,26 @@
   </head>
 
   <body>
-    <header>
-      <h2>
+    <header class="row page-header">
+      <h2 class="columns large-9 small-12">
         <%= link_to "Media Ranker", root_path %>
         <small>Ranking the Best of Everything</small>
       </h2>
-      <div>
+      <section class="columns large-3 small-12">
           <% if session[:user_id] %>
-            <p>Logged in as <%= link_to session[:user_name], user_path(session[:user_id]) %></p>
-            <%= link_to "Logout", logout_path, method: :delete %>
+            <p class="text-right">Logged in as <%= link_to session[:user_name], user_path(session[:user_id]) %></p>
+            <%= link_to "Logout", logout_path, method: :delete, class: "button float-right" %>
           <% else %>
-            <p>Not logged in</p>
-            <%= link_to "Login", login_path %>
+            <p class="text-right">Not logged in</p>
+            <%= link_to "Login", login_path, class: "button float-right" %>
           <% end %>
       </div>
     </header>
-
-  <section class="flash">
     <% flash.each do |name, message| %>
-      <div class="<%= name %>"><%= message %></div>
+      <h3 class="row status <%= name %>"><%= message %></h3>
     <% end %>
-  </section>
-    <%= yield %>
+    <main class="row">
+      <%= yield %>
+    </main>
   </body>
 </html>

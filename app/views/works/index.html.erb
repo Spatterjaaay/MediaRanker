@@ -1,42 +1,47 @@
-<% if @spotlight_work %>
-<h3>Media Spotlight: <%= @spotlight_work.title %> by <%= @spotlight_work.creator%></h3>
-<p><%= pluralize(@spotlight_work.votes.count, "vote") %> - <%= @spotlight_work.description %></p>
-<% end %>
-
-
-<h3>Top Movies</h3>
-
-  <ul>
-    <% @sorted_movies.each do |movie| %>
-      <li>
-        <h4><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator %>
-        <p><%= pluralize(movie.votes_count, "vote") %></p>
-      </li>
+<section class="row spotlight">
+  <div>
+    <% if @spotlight_work %>
+    <h3>Media Spotlight: <%= link_to @spotlight_work.title, work_path(@spotlight_work.id) %> by <%= @spotlight_work.creator%></h3>
+    <p><%= pluralize(@spotlight_work.votes.count, "vote") %> - <%= @spotlight_work.description %></p>
     <% end %>
-  </ul>
+  </div>
+</section>
 
-<%= link_to "View more movies", movies_path %>
+<section class="top-ten columns large-4 small-12">
+  <h3>Top Movies</h3>
+    <ul>
+      <% @sorted_movies.each do |movie| %>
+        <li>
+          <h4><%= link_to movie.title, work_path(movie.id) %> <small>by <%= movie.creator %></small></h4>
+          <p><%= pluralize(movie.votes_count, "vote") %></p>
+        </li>
+      <% end %>
+    </ul>
+  <%= link_to "View more movies", movies_path %>
+</section>
 
-<h3>Top Books</h3>
-  <ul>
-    <% @sorted_books.each do |book| %>
-      <li>
-        <h4><%= link_to book.title, work_path(book.id) %> by <%= book.creator %>
-        <p><%= pluralize(book.votes_count, "vote") %></p>
-      </li>
-    <% end %>
-  </ul>
-<%= link_to "View more books", books_path %>
+<section class="top-ten columns large-4 small-12">
+  <h3>Top Books</h3>
+    <ul>
+      <% @sorted_books.each do |book| %>
+        <li>
+          <h4><%= link_to book.title, work_path(book.id) %> <small>by <%= book.creator %></small></h4>
+          <p><%= pluralize(book.votes_count, "vote") %></p>
+        </li>
+      <% end %>
+    </ul>
+  <%= link_to "View more books", books_path %>
+</section>
 
-<h3>Top Albums</h3>
-
-  <ul>
-    <% @sorted_albums.each do |album| %>
-      <li>
-        <h4><%= link_to album.title, work_path(album.id) %> by <%= album.creator %>
-        <p><%= pluralize(album.votes_count, "vote") %></p>
-      </li>
-    <% end %>
-  </ul>
-
-<%= link_to "View more albums", albums_path %>
+<section class="top-ten columns large-4 small-12">
+  <h3>Top Albums</h3>
+    <ul>
+      <% @sorted_albums.each do |album| %>
+        <li>
+          <h4><%= link_to album.title, work_path(album.id) %> <small>by <%= album.creator %></small></h4>
+          <p><%= pluralize(album.votes_count, "vote") %></p>
+        </li>
+      <% end %>
+    </ul>
+  <%= link_to "View more albums", albums_path %>
+</section>
