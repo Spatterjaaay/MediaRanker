@@ -1,4 +1,4 @@
-<ul>
+<ul class="error">
   <% @work.errors.each do |field, msg| %>
   <li>
     <%= field %> <%= msg %>
@@ -20,5 +20,5 @@
   <%= f.label :description %>
   <%= f.text_field :description %>
 
-  <%= f.submit nil %>
+  <%= f.submit nil, class: "button" %>
 <% end %>

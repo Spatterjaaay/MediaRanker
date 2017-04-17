@@ -1,11 +1,9 @@
 <% if @vote %>
-<ul>
-  <% @vote.errors.each do |field, msg| %>
-  <li>
-    <%= field %> <%= msg %>
-  </li>
-  <% end %>
-</ul>
+  <ul class="error">
+    <% @vote.errors.each do |field, msg| %>
+      <li><%= field %> <%= msg %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <article class="media-details columns large-6 small-12">
@@ -23,9 +21,7 @@
   <% end %>
 
   <%= link_to "Edit", edit_work_path(@result_work.id), class: "button" %>
-
   <%= link_to "Upvote", upvote_path(@result_work.id), method: :post, class: "button" %>
-  <!-- redirects to the wrong path atm!!! -->
   <%= link_to "Delete", work_path(@result_work.id),
       data: {confirm: "Are you sure?"},
       method: :delete, class: "alert button" %>
